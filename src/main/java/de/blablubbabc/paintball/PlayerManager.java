@@ -156,7 +156,7 @@ public class PlayerManager {
 			return false;
 		}
 		// no full health?
-		if (player.getHealth() < player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() && plugin.checkHealth) {
+		if (player.getHealth() < player.getAttribute(Attribute.MAX_HEALTH).getValue() && plugin.checkHealth) {
 			player.sendMessage(Translator.getString("NEED_FULL_HEALTH"));
 			return false;
 		}

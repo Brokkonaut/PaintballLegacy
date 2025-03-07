@@ -39,8 +39,8 @@ repositories {
 	// Also includes: bStats
 	mavenCentral()
 
-	// Bukkit/Spigot API
-	maven { url 'https://hub.spigotmc.org/nexus/content/groups/public/' }
+	// Paper API
+	maven { url 'https://repo.papermc.io/repository/maven-public/' }
 	// VaultAPI
 	maven { url 'https://nexus.hc.to/content/repositories/pub_releases' }
 	// IndividualSigns, NuVotifier
@@ -49,15 +49,21 @@ repositories {
 }
 
 dependencies {
-	compileOnly 'org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT'
+	compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
 	compileOnly 'com.github.blablubbabc:IndividualSigns:2.7.0'
 	compileOnly 'net.milkbowl.vault:VaultAPI:1.7'
 	compileOnly 'com.github.NuVotifier:NuVotifier:2.7.2'
 	compileOnly 'org.bstats:bstats-bukkit:3.0.0'
 	compileOnly 'me.clip:placeholderapi:2.11.6'
 
-	testImplementation 'org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT'
+	testImplementation 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
 	testImplementation 'junit:junit:4.13.1'
+}
+
+configurations.all {
+	resolutionStrategy.capabilitiesResolution.withCapability("org.bukkit:bukkit") {
+		select("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+	}
 }
 
 license {
